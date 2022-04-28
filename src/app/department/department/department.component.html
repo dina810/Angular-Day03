@@ -1,0 +1,48 @@
+<div class="container m-auto text-center">
+  <!-- powerTo pipe -->
+  <h1 style="color: blueviolet;">power of"x,y" is:{{3|powerTo:2}}</h1>
+  <hr>
+  <table class="table w-75 m-auto text-center">
+    <thead><h1 style="color: brown;">Product List</h1></thead>
+    <thead>
+      <div class="row">
+      <div class="col">
+        <h4 style="color:blueviolet">Filter By:</h4>
+      </div>
+      <div class="col">
+        
+        <input [(ngModel)]="term" class="form-control">
+      </div>
+    </div>
+      
+    </thead>
+    <thead>
+      <tr>
+        <th><button class="btn btn-primary bg-primary m-2" (click)="imgToggle()">Show image</button></th>
+        <th>Product</th>
+        <th>Product Code</th>
+        <th>Available</th>
+        <th>Price</th>
+        <th>Star</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dept of department|search:term">
+        <td>
+          <span *ngIf="showImages">
+            <img src="../../../assets/{{dept.images}}" class=" img-fluid" width=50px height=50px/>
+          </span>
+        </td>
+        <td>{{ dept.name }}</td>
+        <td>{{ dept.code | filterarr}}</td>
+        <td>{{ dept.available}}</td>
+        <td>{{ dept.price|currency }}</td>
+        <td>
+          {{dept.rate}}
+          <app-star [rating]="dept.rate"></app-star>
+
+        </td>
+
+
+        
+        
